@@ -4,16 +4,16 @@
 
 .show-on-hover {
     cursor: pointer;
-    opacity: 0;
+    display: none;
 }
 
 /* Source Mode */
 .cm-line:hover .show-on-hover {
-    opacity: 1.0;
+    display: unset;
 }
 /* Reading Mode */
 code:hover .show-on-hover {
-    opacity: 1.0;
+    display: unset;
 }
 
 .tasks-setting-important {
