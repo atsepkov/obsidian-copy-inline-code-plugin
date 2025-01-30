@@ -1,22 +1,37 @@
 .copy-to-clipboard-icon {
-    cursor: pointer
+    cursor: pointer;
 }
 
 .show-on-hover {
     cursor: pointer;
     opacity: 0;
+    position: absolute;
+    margin-left: 4px; /* Space between code and icon */
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+/* Create positioning context for inline code blocks */
+.cm-line > code, 
+code {
+    position: relative;
+    display: inline-block;
+    padding-right: 18px; /* Prevent text overlap with icon */
 }
 
 /* Source Mode */
-.cm-line:hover .show-on-hover {
-    opacity: 1.0;
+.cm-line:hover > .show-on-hover {
+    opacity: 1;
+    transition: opacity 0.2s;
 }
+
 /* Reading Mode */
 code:hover .show-on-hover {
-    opacity: 1.0;
+    opacity: 1;
+    transition: opacity 0.2s;
 }
 
 .tasks-setting-important {
-	color: red;
-	font-weight: bold;
+    color: red;
+    font-weight: bold;
 }
