@@ -6,23 +6,33 @@
     cursor: pointer;
     opacity: 0;
     position: absolute;
-    margin-left: 4px; /* Space between code and icon */
+    margin-left: -4px; /* Space between code and icon */
     transform: translateY(-50%);
     top: 50%;
 }
 
 /* Create positioning context for inline code blocks */
-.cm-line > code, 
-code {
+.cm-line > code {
     position: relative;
     display: inline-block;
-    padding-right: 18px; /* Prevent text overlap with icon */
+    padding-right: 10px; /* Prevent text overlap with icon */
 }
 
-/* Source Mode */
-.cm-line:hover > .show-on-hover {
-    opacity: 1;
-    transition: opacity 0.2s;
+/* Show ALL .show-on-hover elements after the hovered code block */
+.cm-inline-code:hover ~ .show-on-hover, .show-on-hover:hover {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+/* Hide any .show-on-hover that comes AFTER ANOTHER .cm-inline-code */
+.cm-inline-code:hover ~ .cm-inline-code ~ .show-on-hover {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Default hidden state */
+.show-on-hover {
+  opacity: 0;
 }
 
 /* Reading Mode */

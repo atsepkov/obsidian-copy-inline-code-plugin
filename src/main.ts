@@ -1,4 +1,3 @@
-import { CopyInlineCodePluginTab } from "./settings";
 import { Notice, Plugin } from 'obsidian';
 import { createCopyPlugin } from './copy-inline-code-view-plugin';
 
@@ -8,7 +7,7 @@ interface CopyInlineCodePluginSettings {
 }
 
 const DEFAULT_SETTINGS: Partial<CopyInlineCodePluginSettings> = {
-  showOnHover: false,
+  showOnHover: true,
 };
 
 export default class CopyInlineCodePlugin extends Plugin {
@@ -16,9 +15,7 @@ export default class CopyInlineCodePlugin extends Plugin {
 
   async onload() {
     await this.loadSettings();
-    this.addSettingTab(new CopyInlineCodePluginTab(this.app, this));
     this.copyInlineCodeLogic();
-    
   }
 
   async loadSettings() {
@@ -30,7 +27,7 @@ export default class CopyInlineCodePlugin extends Plugin {
   }
 
   async copyInlineCodeLogic() {
-    this.registerEditorExtension([createCopyPlugin(this.settings.showOnHover)]);
+    this.registerEditorExtension([createCopyPlugin(true)]);
 		this.registerMarkdownPostProcessor((element, context) => {
 			const inlineCodes = element.querySelectorAll("*:not(pre) > code");
 			
@@ -40,7 +37,7 @@ export default class CopyInlineCodePlugin extends Plugin {
 				}
 
 				const icon = createSpan({cls: "copy-to-clipboard-icon", text: "\xa0📋"})
-        icon.toggleClass("show-on-hover", this.settings.showOnHover)
+        icon.toggleClass("show-on-hover", true)
         const textToCopy = code.textContent
 
 				icon.onclick = (event) => {			
