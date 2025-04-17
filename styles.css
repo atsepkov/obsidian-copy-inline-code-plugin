@@ -20,19 +20,25 @@
 
 /* Show ALL .show-on-hover elements after the hovered code block */
 .cm-inline-code:hover ~ .show-on-hover, .show-on-hover:hover {
-  opacity: 1;
-  transition: opacity 0.2s;
+	opacity: 1;
+	transition: opacity 0.2s;
+}
+.cm-inline-code:hover ~ .show-on-hover, .show-on-hover:hover {
+	display: contents;
 }
 
 /* Hide any .show-on-hover that comes AFTER ANOTHER .cm-inline-code */
 .cm-inline-code:hover ~ .cm-inline-code ~ .show-on-hover {
-  opacity: 0;
-  transition: opacity 0.2s;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+.cm-inline-code:hover ~ .cm-inline-code ~ .show-on-hover {
+	display: none;
 }
 
 /* Default hidden state */
 .show-on-hover {
-  opacity: 0;
+	opacity: 0;
 }
 
 /* Reading Mode */
